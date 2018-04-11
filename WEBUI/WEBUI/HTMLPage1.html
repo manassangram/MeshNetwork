@@ -47,16 +47,33 @@
             meshlist = [];
             var a;
             var b;
-            var size = x.length;
+            var size = x.length;// number of nodes
+            var edgesize=0;
             for (var i = 0; i < size; i++) {
                 a = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
                 b = i + 1;
-                names.push([b, a]);
-                document.getElementById("label_name").innerHTML = names[i];
                 
+                edgesize = x[i].getElementsByTagName("meshlist")[0].getElementsByTagName("neighbour").length;//number of edges per node
+                console.log(edgesize);
+                names.push([b, a, edgesize]); //b is id ; a is name
+                for (var j = 0; j < edgesize; j++)
+                {
+                    console.log("j is : "+j);
+                    c = x[i].getElementsByTagName("meshlist")[0].getElementsByTagName("neighbour")[j].childNodes[0].nodeValue;
+                    var num = parseInt(c[2]);
+                    console.log(x[i].getElementsByTagName("meshlist")[0].getElementsByTagName("neighbour")[j].childNodes[0].nodeValue + "   :   " + num);
+                    if (b < num)
+                    {
+                        meshlist.push([b, num]);
+                    }
+                    
+                }
+                //console.log(x[i].getElementsByTagName("meshlist")[0].getElementsByTagName("neighbour")[1].childNodes[0].nodeValue);
 
             }
-            draw(names, size);
+            document.getElementById("label_name").innerHTML = names;
+            document.getElementById("label_name1").innerHTML = meshlist;
+            draw(names, size, meshlist);
             
         }
 
@@ -69,7 +86,7 @@
     var EDGE_LENGTH_SUB = 50;
 
     // Called when the Visualization API is loaded.
-    function draw(names, size) {
+    function draw(names, size, meshlist) {
         // Create a data table with nodes.
         nodes = [];
 
@@ -80,17 +97,21 @@
 
         for (var i = 0; i < size; i++)
         {
-            nodes.push({ id: i+1, label: names[i][1], image: 'bulb.png', shape: 'image' });
+            nodes.push({ id: i + 1, label: names[i][1], image: 'bulb.png', shape: 'image' });
+            
+        }
+        for (var j = 0; j < meshlist.length; j++) {
+            console.log(meshlist[j][0] + "  to   " + meshlist[j][1]);
+            edges.push({ from: meshlist[j][0], to: meshlist[j][1], length: EDGE_LENGTH_MAIN });
         }
 
         /*nodes.push({ id: 1, label: names[0][1], image: 'bulb.png', shape: 'image' });
         nodes.push({ id: 2, label: names[1][1], image: 'bulb.png', shape: 'image' });
         nodes.push({ id: 3, label: names[2][1], image: 'bulb.png', shape: 'image' });
         */
-
-        edges.push({ from: 1, to: 2, length: EDGE_LENGTH_MAIN });
+        /*edges.push({ from: 1, to: 2, length: EDGE_LENGTH_MAIN });
         edges.push({ from: 1, to: 3, length: EDGE_LENGTH_MAIN });
-        edges.push({ from: 2, to: 3, length: EDGE_LENGTH_MAIN });
+        edges.push({ from: 2, to: 3, length: EDGE_LENGTH_MAIN });*/
 
         
 
