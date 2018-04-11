@@ -72,7 +72,6 @@
     <Content Include="bulb.png" />
     <Content Include="Discover.html" />
     <Content Include="HtmlPage.html" />
-    <Content Include="HTMLPage1.html" />
     <Content Include="Lights.html" />
     <Content Include="lights.jpg" />
     <Content Include="meshlight.xml">

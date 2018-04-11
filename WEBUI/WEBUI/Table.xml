@@ -17,7 +17,6 @@
     <status>0</status>
     <meshlist>
       <neighbour>pi1</neighbour>
-      <neighbour>pi3</neighbour>
     </meshlist>
   </node>
   <node>
@@ -27,7 +26,6 @@
     <status>0</status>
     <meshlist>
       <neighbour>pi1</neighbour>
-      <neighbour>pi2</neighbour>
     </meshlist>
   </node>
 </mesh>

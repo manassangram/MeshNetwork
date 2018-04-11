@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8" />
-   
+    <script type="text/javascript" src="vis.js"></script>
+    <link href="vis.css" rel="stylesheet" type="text/css" />
+
     <title></title>
     <style>
-
-       
         body {
             background-color: black;
             background-repeat: no-repeat;
@@ -22,6 +22,16 @@
             padding-top: 10px;
         }
 
+        #mynetwork {
+            
+            width: 100%;
+            height: 400px;
+            border: 1px solid black;
+        }
+        #label_name, #label_name1 {
+            background-color: white;
+        }
+        
         a:link {
             color: white;
         }
@@ -41,9 +51,9 @@
             font-style: oblique;
             color: goldenrod;
         }
-       </style>
-    </head>
-<body>
+    </style>
+</head>
+<body onload="loadXMLDoc()">
     <div id="nav">
         <ul id="nav_list">
             <li id="heading"><b>Blue Mesh</b></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -54,32 +64,141 @@
         </ul>
 
     </div>
-    
-        <script>
 
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
+    <div id="label_name">
+
+    </div>
+    <div id="label_name1">
+
+    </div>
+    <div id="mynetwork">
+
+    </div>
+
+
+    </div>
+
+    <script type="text/javascript">
+
+        /*var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            //if (this.readyState == 4 && this.status == 200) {
+                myFunction(this);
+            //}
+        };
+        xhttp.open("GET", "Table.xml", true);
+        xhttp.send();*/
+
+        function loadXMLDoc() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     myFunction(this);
                 }
             };
-            xhttp.open("GET", "ContactUs.xml", true);
-            xhttp.send();
+            xmlhttp.open("GET", "Table.xml", false);
+            xmlhttp.send();
+        }
 
-            function myFunction(xml) {
-                var txt = "";
-                var xmlDoc = xml.responseXML;
-                var x = xmlDoc.getElementsByTagName('info');
-                
+        var names = null;
+        var meshlist = null;
 
-                
+        function myFunction(xml) {
+            var xmlDoc = xml.responseXML;
+            var x = xmlDoc.getElementsByTagName("node"); //storing node in x
+            names = [];
+            meshlist = [];
+            var a;
+            var b;
+            var size = x.length;// number of nodes
+            var edgesize=0;
+            for (var i = 0; i < size; i++) {
+                a = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue; // stores name of device ; as it is the first child node
+                b = i + 1; // stores the id's
+
+                edgesize = x[i].getElementsByTagName("meshlist")[0].getElementsByTagName("neighbour").length;//number of edges per node(i.e getting the size of meshlist for each node)
+                console.log(edgesize);
+                names.push([b, a, edgesize]); //b is id ; a is name
+                for (var j = 0; j < edgesize; j++)
+                {
+                    console.log("j is : "+j);
+                    c = x[i].getElementsByTagName("meshlist")[0].getElementsByTagName("neighbour")[j].childNodes[0].nodeValue;//getting the meshlist
+                    var num = parseInt(c[2]);//parsing the third character d string
+                    console.log(x[i].getElementsByTagName("meshlist")[0].getElementsByTagName("neighbour")[j].childNodes[0].nodeValue + "   :   " + num);
+                    if (b < num)
+                    {
+                        meshlist.push([b, num]);
+                    }
+
+                }
+                //console.log(x[i].getElementsByTagName("meshlist")[0].getElementsByTagName("neighbour")[1].childNodes[0].nodeValue);
+
             }
+            document.getElementById("label_name").innerHTML = names;
+            document.getElementById("label_name1").innerHTML = meshlist;
+            draw(names, size, meshlist);
 
-        </script>
+        }
 
-        <form action="Lights.html">
-        <input type="image" src="bulb.png" alt="Submit" width="100" height="100" >
-        </form>
-    </div>
+    var nodes = null;
+    var edges = null;
+    var network = null;
+
+
+    var EDGE_LENGTH_MAIN = 150;
+    var EDGE_LENGTH_SUB = 50;
+
+    // Called when the Visualization API is loaded.
+    function draw(names, size, meshlist) {
+        // Create a data table with nodes.
+        nodes = [];
+
+        // Create a data table with links.
+        edges = [];
+
+        //names = [[1,"nikki"], [2,"Manas"], [3,"moti"]];
+
+        for (var i = 0; i < size; i++)
+        {
+            nodes.push({ id: i + 1, label: names[i][1], image: 'bulb.png', shape: 'image' });
+
+        }
+        for (var j = 0; j < meshlist.length; j++) {
+            console.log(meshlist[j][0] + "  to   " + meshlist[j][1]);
+            edges.push({ from: meshlist[j][0], to: meshlist[j][1], length: EDGE_LENGTH_MAIN });//from where to where we need to have a connection
+        }
+
+        /*nodes.push({ id: 1, label: names[0][1], image: 'bulb.png', shape: 'image' });
+        nodes.push({ id: 2, label: names[1][1], image: 'bulb.png', shape: 'image' });
+        nodes.push({ id: 3, label: names[2][1], image: 'bulb.png', shape: 'image' });
+        */
+        /*edges.push({ from: 1, to: 2, length: EDGE_LENGTH_MAIN });
+        edges.push({ from: 1, to: 3, length: EDGE_LENGTH_MAIN });
+        edges.push({ from: 2, to: 3, length: EDGE_LENGTH_MAIN });*/
+
+
+
+        // create a network
+        var container = document.getElementById('mynetwork');
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        var options = {
+            interaction: { hover: true },
+            manipulation: {
+                enabled:true
+            }
+        };
+        network = new vis.Network(container, data, options);
+
+        network.on("click", function (params) {
+            params.event = "[original event]";
+            console.log('click event,getNodeAt returns: ' + this.getNodeAt(params.pointer.DOM));
+
+        });
+
+    }
+    </script>
 </body>
 </html>

@@ -108,7 +108,6 @@ D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\bin\roslyn\VBCSCompiler.exe
 D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\bin\roslyn\VBCSCompiler.exe.config
 D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\obj\Debug\WEBUI.csprojResolveAssemblyReference.cache
 D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\obj\Debug\WEBUI.csproj.CoreCompileInputs.cache
 D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\obj\Debug\WEBUI.dll
 D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\obj\Debug\WEBUI.pdb
