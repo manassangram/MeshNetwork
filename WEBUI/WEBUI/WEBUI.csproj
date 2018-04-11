@@ -72,6 +72,7 @@
     <Content Include="bulb.png" />
     <Content Include="Discover.html" />
     <Content Include="HtmlPage.html" />
+    <Content Include="HTMLPage1.html" />
     <Content Include="Lights.html" />
     <Content Include="lights.jpg" />
     <Content Include="meshlight.xml">
@@ -83,6 +84,31 @@
     <Content Include="Scripts\cytoscape.min.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
+    <Content Include="Table.xml" />
+    <Content Include="vis\img\network\acceptDeleteIcon.png" />
+    <Content Include="vis\img\network\addNodeIcon.png" />
+    <Content Include="vis\img\network\backIcon.png" />
+    <Content Include="vis\img\network\connectIcon.png" />
+    <Content Include="vis\img\network\cross.png" />
+    <Content Include="vis\img\network\cross2.png" />
+    <Content Include="vis\img\network\deleteIcon.png" />
+    <Content Include="vis\img\network\downArrow.png" />
+    <Content Include="vis\img\network\editIcon.png" />
+    <Content Include="vis\img\network\leftArrow.png" />
+    <Content Include="vis\img\network\minus.png" />
+    <Content Include="vis\img\network\plus.png" />
+    <Content Include="vis\img\network\rightArrow.png" />
+    <Content Include="vis\img\network\upArrow.png" />
+    <Content Include="vis\img\network\zoomExtends.png" />
+    <Content Include="vis\vis-graph3d.min.js" />
+    <Content Include="vis\vis-network.min.css" />
+    <Content Include="vis\vis-network.min.js" />
+    <Content Include="vis\vis-timeline-graph2d.min.css" />
+    <Content Include="vis\vis-timeline-graph2d.min.js" />
+    <Content Include="vis\vis.css" />
+    <Content Include="vis\vis.js" />
+    <Content Include="vis\vis.map" />
+    <Content Include="vis\vis.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -135,6 +161,8 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="vis\vis.min.css" />
+    <Content Include="vis\vis.min.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />

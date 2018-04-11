@@ -1,0 +1,108 @@
+﻿
+<html>
+<head>
+    <script type="text/javascript" src="vis.js"></script>
+    <link href="vis.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        #mynetwork {
+            width: 600px;
+            height: 400px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body >
+
+
+    <div id="label_name">
+
+    </div>
+    <div id="label_name1">
+
+    </div>
+    <div id="mynetwork">
+
+    </div>
+
+
+    <script type="text/javascript">
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunction(this);
+            }
+        };
+        xhttp.open("GET", "Table.xml", true);
+        xhttp.send();
+
+        var names = null;
+        var meshlist = null;
+
+        function myFunction(xml) {
+            var xmlDoc = xml.responseXML;
+            var x = xmlDoc.getElementsByTagName("node");
+            names = [];
+            meshlist = [];
+            var a;
+            var b;
+            var size = x.length;
+            for (var i = 0; i < size; i++) {
+                a = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+                b = i + 1;
+                names.push([b, a]);
+                document.getElementById("label_name").innerHTML = names[i];
+                
+
+            }
+            draw(names, size);
+            
+        }
+
+    var nodes = null;
+    var edges = null;
+    var network = null;
+
+
+    var EDGE_LENGTH_MAIN = 150;
+    var EDGE_LENGTH_SUB = 50;
+
+    // Called when the Visualization API is loaded.
+    function draw(names, size) {
+        // Create a data table with nodes.
+        nodes = [];
+
+        // Create a data table with links.
+        edges = [];
+
+        //names = [[1,"nikki"], [2,"Manas"], [3,"moti"]];
+
+        for (var i = 0; i < size; i++)
+        {
+            nodes.push({ id: i+1, label: names[i][1], image: 'bulb.png', shape: 'image' });
+        }
+
+        /*nodes.push({ id: 1, label: names[0][1], image: 'bulb.png', shape: 'image' });
+        nodes.push({ id: 2, label: names[1][1], image: 'bulb.png', shape: 'image' });
+        nodes.push({ id: 3, label: names[2][1], image: 'bulb.png', shape: 'image' });
+        */
+
+        edges.push({ from: 1, to: 2, length: EDGE_LENGTH_MAIN });
+        edges.push({ from: 1, to: 3, length: EDGE_LENGTH_MAIN });
+        edges.push({ from: 2, to: 3, length: EDGE_LENGTH_MAIN });
+
+        
+
+        // create a network
+        var container = document.getElementById('mynetwork');
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        var options = {};
+        network = new vis.Network(container, data, options);
+    }
+    </script>
+</body>
+</html>
