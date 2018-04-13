@@ -111,3 +111,4 @@ D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\bin\Microsoft.CodeDom.Providers.DotNetCompil
 D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\obj\Debug\WEBUI.csproj.CoreCompileInputs.cache
 D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\obj\Debug\WEBUI.dll
 D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\obj\Debug\WEBUI.pdb
+D:\CAPSTONE\MeshNetwork\WEBUI\WEBUI\obj\Debug\WEBUI.csprojResolveAssemblyReference.cache

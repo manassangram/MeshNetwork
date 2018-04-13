@@ -71,12 +71,10 @@
     <None Include="packages.config" />
     <Content Include="bulb.png" />
     <Content Include="Discover.html" />
-    <Content Include="HtmlPage.html" />
+    <Content Include="HomePage.html" />
+    <Content Include="HtmlPage2Test.html" />
     <Content Include="Lights.html" />
     <Content Include="lights.jpg" />
-    <Content Include="meshlight.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="quote.png" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\cytoscape.js" />
