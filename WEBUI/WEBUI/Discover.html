@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <script type="text/javascript" src="vis.js"></script>
     <link href="vis.css" rel="stylesheet" type="text/css" />
-
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <title></title>
     <style>
@@ -13,7 +13,7 @@
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
             z-index: 1; /* Sit on top */
-            padding-top: 80px; /* Location of the box */
+            padding-top: 100px; /* Location of the box */
             left: 0;
             top: 0;
             width: 100%; /* Full width */
@@ -25,22 +25,19 @@
 
         /* Modal Content */
         .modal-content {
-            background-color: rgb(32,32,32);
+            background-color: #fefefe;
             margin: auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 90%;
+            width: 80%;
         }
 
         /* The Close Button */
         .close {
-            color: white;
+            color: #aaaaaa;
             float: right;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: bold;
-            position: absolute;
-            right: 0;
-            top: 0;
         }
 
             .close:hover,
@@ -71,6 +68,9 @@
             border: 1px solid black;
         }
 
+        #label_name, #label_name1 {
+            background-color: white;
+        }
 
         a:link {
             color: white;
@@ -90,124 +90,6 @@
             font-family: "Times New Roman", Times, serif;
             font-style: oblique;
             color: goldenrod;
-        }
-
-
-
-
-
-
-        /*********************************************************************/
-
-        #box {
-            height: 300px;
-            width: 100%;
-            position: relative;
-            background-color: rgb(80,80,80);
-        }
-
-        #left {
-            float: left;
-            width: 49.5%;
-            height: 100%;
-            background-color: rgb(32,32,32);
-            position: absolute;
-            left: 0;
-        }
-
-
-
-        #right {
-            float: right;
-            width: 49.5%;
-            height: 100%;
-            background-color: rgb(32,32,32);
-            position: absolute;
-            right: 0;
-        }
-
-
-        .forname {
-            font-size: 25px;
-            color: white;
-            font-family: 'Lucida Calligraphy';
-            /* position: relative;
-            display: inline-block;*/
-        }
-
-        .fortable {
-            margin-left: 23%;
-            margin-top: 10%;
-        }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 90px;
-            height: 34px;
-            margin-top: 5%;
-            margin-left: 10%;
-        }
-
-            .switch input {
-                display: none;
-            }
-
-        .slider_round {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ca2222;
-            -webkit-transition: .4s;
-            transition: .4s;
-            border-radius: 34px;
-        }
-
-            .slider_round:before {
-                position: absolute;
-                content: "";
-                height: 26px;
-                width: 26px;
-                left: 4px;
-                bottom: 4px;
-                background-color: white;
-                -webkit-transition: .4s;
-                transition: .4s;
-                border-radius: 50%;
-            }
-
-        input:checked + .slider_round {
-            background-color: #2ab934;
-        }
-
-        input:focus + .slider_round {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked + .slider_round:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(55px);
-        }
-
-
-        .slider_round:after {
-            content: 'OFF';
-            color: white;
-            display: block;
-            position: absolute;
-            transform: translate(-50%,-50%);
-            top: 50%;
-            left: 50%;
-            font-size: 10px;
-            font-family: Verdana, sans-serif;
-        }
-
-        input:checked + .slider_round:after {
-            content: 'ON';
         }
     </style>
 </head>
@@ -234,7 +116,7 @@
     </div>
 
 
-
+    </div>
 
     <script type="text/javascript">
 
@@ -254,7 +136,7 @@
                     myFunction(this);
                 }
             };
-            xmlhttp.open("GET", "MeshDetails.xml", false);
+            xmlhttp.open("GET", "Table.xml", false);
             xmlhttp.send();
         }
 
@@ -364,7 +246,7 @@
             params.event = "[original event]";
             console.log('select event,getNodeAt returns: ' + this.getNodeAt(params.pointer.DOM));
             modal.style.display = "block";
-            bisket(network.getSelectedNodes());
+
         });
 
         //*************************************************************************//
@@ -379,83 +261,15 @@
         }
         //************************************************************************//
     }
-
-
-
     </script>
     <div id="myModal" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-
-            <div id="box">
-                <div id="left">
-                    <input type="image" src="bulb.png">
-
-                </div>
-
-                <div id="right">
-                    <div id="fortable">
-                        <table id="bulb" border="0" cellspacing="25" style="width:15%">
-                            <tr>
-                                <td align="char">
-                                    <label class="forname">Switch:</label>
-                                </td>
-                                <td valign="middle">
-                                    <label class="switch">
-                                        <input type="checkbox" id="togBtn">
-                                        <div class="slider_round"></div>
-                                    </label>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="color:white;font-family:'Lucida Calligraphy';font-size:25px">Name:</td>
-                                <td style="color:white">
-                                    <label id="node_name" style="font-family:'Lucida Calligraphy';font-size:25px"> PI1 </label>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="color:white;font-family:'Lucida Calligraphy';font-size:25px">UUID:</td>
-                                <td style="color:white">
-                                    <label id="node_uuid" style="font-family:'Lucida Calligraphy';font-size:25px"> XXXXX </label>
-                                </td>
-                            </tr>
-
-                        </table>
-
-
-                    </div>
-
-                </div>
-            </div>
+            <p>Some text in the Modal..</p>
         </div>
 
     </div>
-    <script>
-        function bisket(node) {
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                getNode(this);
-            }
-        };
-        xhttp.open("GET", "MeshDetails.xml", true);
-        xhttp.send();
-
-        function getNode(xml) {
-            var txt = "";
-            var xmlDoc = xml.responseXML;
-            var x = xmlDoc.getElementsByTagName("node");
-            document.getElementById("node_name").innerHTML = x[node-1].getElementsByTagName("name")[0].childNodes[0].nodeValue;
-            document.getElementById("node_uuid").innerHTML = x[node-1].getElementsByTagName("node_uuid")[0].childNodes[0].nodeValue;
-        }
-    }
-
-    </script>
-
 </body>
 </html>
