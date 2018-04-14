@@ -8,6 +8,7 @@
     <meshlist>
       <neighbour>pi2</neighbour>
       <neighbour>pi3</neighbour>
+      <neighbour>pi4</neighbour>
     </meshlist>
   </node>
   <node>
@@ -26,6 +27,16 @@
     <status>0</status>
     <meshlist>
       <neighbour>pi1</neighbour>
+    </meshlist>
+  </node>
+  <node>
+    <name>pi4</name>
+    <description>Light4</description>
+    <node_uuid>B0:B4:48:BF:C9:86</node_uuid>
+    <status>0</status>
+    <meshlist>
+      <neighbour>pi2</neighbour>
+      <neighbour>pi3</neighbour>
     </meshlist>
   </node>
 </mesh>

@@ -75,13 +75,13 @@
     <Content Include="HtmlPage2Test.html" />
     <Content Include="Lights.html" />
     <Content Include="lights.jpg" />
+    <Content Include="MeshDetails.xml" />
     <Content Include="quote.png" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\cytoscape.js" />
     <Content Include="Scripts\cytoscape.min.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
-    <Content Include="Table.xml" />
     <Content Include="vis\img\network\acceptDeleteIcon.png" />
     <Content Include="vis\img\network\addNodeIcon.png" />
     <Content Include="vis\img\network\backIcon.png" />
